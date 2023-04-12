@@ -18,10 +18,10 @@ def get_data(match_id):
     #     print(i)
     #     print('!!!')
     #     break
-    # print(table_a)
+    print(table_a)
     table_b = db.get_table_b_data(conn, match_id)
     # print()
-    # print(table_b)
+    print(table_b)
     return jsonify({"table_a": table_a, "table_b": table_b})
 
 @app.route("/update_match", methods=["POST"])
