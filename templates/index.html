@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/static/styles.css" id="cssurl">
     <title>STRIDE Match</title>
 </head>
+<style>
+    .not-matched {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .matched {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
 <body>
     <div class="container">
         <h1 class="mt-5 mb-4">STRIDE Match</h1>
@@ -15,8 +26,12 @@
             <label for="match_id" class="match-id-label">Match ID:</label>
             <select class="form-control js-example-tags" id="match_id">
                 <option value="" selected>Type or select a Match ID</option>
-                {% for match_id in match_ids %}
-                    <option value="{{ match_id }}">{{ match_id }}</option>
+                {% for match_id, seen in match_id_seen.items() %}
+                    {% if seen == 0 %}
+                        <option value="{{ match_id }}" class="not-matched">{{ match_id }}</option>
+                    {% else %}
+                        <option value="{{ match_id }}" class="matched">{{ match_id }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
@@ -32,8 +47,12 @@
                 </table>
             </div>
         </div>
+        <button type="button" class="btn btn-primary" id="mark-match-btn">Mark as matched</button>
     </div>
+    
+
 </body>
+</script>
 </html>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -106,6 +125,59 @@
         let id = $(this).data("id");
         let checked = $(this).is(":checked");
         $.post("/update_match", {id: id, match: checked ? 1 : 0});
+
+    var matchIdSelect = document.getElementById('match_id');
+    var markMatchBtn = document.getElementById('mark-match-btn');
+
+    matchIdSelect.addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex];
+            if (selectedOption.classList.contains('not-matched')) {
+                selectedOption.classList.remove('not-matched');
+                selectedOption.classList.add('matched');
+                markMatchBtn.classList.remove('btn-secondary');
+                markMatchBtn.classList.add('btn-primary');
+                markMatchBtn.innerHTML = 'Mark as matched';
+            } else {
+                selectedOption.classList.remove('matched');
+                selectedOption.classList.add('not-matched');
+                markMatchBtn.classList.remove('btn-primary');
+                markMatchBtn.classList.add('btn-secondary');
+                markMatchBtn.innerHTML = 'Unmark';
+            }
+        });
+
+
+    markMatchBtn.addEventListener('click', function() {
+        var matchId = matchIdSelect.value;
+        if (matchId) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var seen = JSON.parse(xhr.responseText).seen;
+                        if (seen === 1) {
+                            alert('Match ID ' + matchId + ' has been marked as matched.');
+                            markMatchBtn.classList.remove('btn-primary');
+                            markMatchBtn.classList.add('btn-secondary');
+                            markMatchBtn.innerHTML = 'Unmark Match';
+                        } else {
+                            alert('Match ID ' + matchId + ' has been unmarked.');
+                             markMatchBtn.classList.remove('btn-secondary');
+                                markMatchBtn.classList.add('btn-primary');
+                                markMatchBtn.innerHTML = 'Mark as matched';
+                        }
+                        window.location.reload();
+                    } else {
+                        alert('There was an error marking the match as matched.');
+                    }
+                }
+            };
+            xhr.open('POST', '/mark_match/' + matchId);
+            xhr.send();
+            }
+        });
+                // // Set initial state of Mark as matched button based on selected option
+                // if (matchId
     });
 </script>
 </body>

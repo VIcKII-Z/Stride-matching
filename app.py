@@ -8,8 +8,9 @@ conn = sqlite3.connect("database/match.sqlite", check_same_thread=False)
 
 @app.route("/")
 def index():
-    match_ids = db.get_match_ids(conn)
-    return render_template("index.html", match_ids=match_ids)
+    match_id_seen= db.get_match_ids(conn)
+    print(match_id_seen)
+    return render_template("index.html", match_id_seen=match_id_seen)
 
 @app.route("/data/<match_id>")
 def get_data(match_id):
@@ -30,6 +31,15 @@ def update_match():
     match = request.form.get("match")
     db.update_match(conn, id, match)
     return "", 204
+
+@app.route('/mark_match/<match_id>', methods=['POST'])
+def mark_match(match_id):
+    c = conn.cursor()
+    c.execute('UPDATE ms SET seen = 1 - seen WHERE yid = ?', (match_id,))
+    conn.commit()
+    c.execute('SELECT seen FROM ms WHERE yid = ?', (match_id,))
+    seen = c.fetchone()[0]
+    return jsonify({'seen': seen})
 
 if __name__ == "__main__":
     app.run(debug=True)

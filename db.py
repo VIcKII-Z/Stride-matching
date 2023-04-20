@@ -1,8 +1,11 @@
 from collections import OrderedDict
 def get_match_ids(conn):
     cursor = conn.cursor()
-    cursor.execute("SELECT DISTINCT yid FROM ms")
-    return [row[0] for row in cursor.fetchall()]
+    cursor.execute("SELECT DISTINCT yid, seen FROM ms")
+    id_seen = {}
+    for id, seen in cursor.fetchall():
+        id_seen[id] = seen
+    return id_seen
 
 def get_table_a_data(conn, match_id):
     cursor = conn.cursor()
