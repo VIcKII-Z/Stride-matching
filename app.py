@@ -32,11 +32,17 @@ def update_match():
     db.update_match(conn, id, match)
     return "", 204
 
-@app.route('/mark_match/<match_id>', methods=['POST'])
-def mark_match(match_id):
+@app.route('/mark_match', methods=['POST'])
+def mark_match():
+    match_id = request.form.get("match_id")
+    print(match_id)
     c = conn.cursor()
     c.execute('UPDATE ms SET seen = 1 - seen WHERE yid = ?', (match_id,))
     conn.commit()
+    c.execute('SELECT seen FROM ms WHERE yid = ?', (match_id,))
+    seen = c.fetchone()[0]
+    print(seen)
+    return jsonify({"success":True})
     c.execute('SELECT seen FROM ms WHERE yid = ?', (match_id,))
     seen = c.fetchone()[0]
     return jsonify({'seen': seen})

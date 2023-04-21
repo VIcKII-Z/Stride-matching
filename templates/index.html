@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="/static/styles.css" id="cssurl">
     <title>STRIDE Match</title>
-</head>
-<style>
-    .not-matched {
-        background-color: #fff;
-        color: #000;
-    }
+    <style>
+        .not-matched, .btn-secondary {
+            background-color: #fff;
+            color: #000;
+        }
 
-    .matched {
-        background-color: #007bff;
-        color: #fff;
-    }
-</style>
+        .btn-primary{
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .seen{
+            background-color: #d3d3d3;
+        }
+        
+        .matched{
+            background-color: #797a79;
+            color: #f8f8f8
+        }
+    </style>
+</head>
 <body>
     <div class="container">
         <h1 class="mt-5 mb-4">STRIDE Match</h1>
@@ -30,42 +38,35 @@
                     {% if seen == 0 %}
                         <option value="{{ match_id }}" class="not-matched">{{ match_id }}</option>
                     {% else %}
-                        <option value="{{ match_id }}" class="matched">{{ match_id }}</option>
+                        <option value="{{ match_id }}" class="matched seen">{{ match_id }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
         </div>
         <div class="row">
             <div class="col-lg-12 table-container mb-3">
-                <!-- <h2 class="mt-5">Table A</h2> -->
-                <table class="table table-striped" id="table_a">
-                </table>
+                <table class="table table-striped" id="table_a"></table>
             </div>
             <div class="col-lg-12 table-container">
-                <!-- <h2 class="mt-5">Table B</h2> -->
-                <table class="table table-striped" id="table_b">
-                </table>
+                <table class="table table-striped" id="table_b"></table>
             </div>
         </div>
         <button type="button" class="btn btn-primary" id="mark-match-btn">Mark as matched</button>
     </div>
     
-
-</body>
-</script>
-</html>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
-
     <script>
+        let currentSeen = 0;
+
         function fetch_data(match_id) {
             $.getJSON("/data/" + match_id, function(data) {
-                // Populate Table A
-                const table_a_columns = ['screenid', 'which_fuint', 'item_index', 'fall_injurybonebreak', 'fall_dislocatedjoint', 'fall_injuryhead', 'fall_cutbleeding', 'fall_cutbleeding_close', 'fall_sprainstrain', 'fall_bruiseswell', 'fall_otherinjury', 'fall_bonebrk_1', 'fall_bonebrk_2', 'fall_bonebrk_3', 'fall_bonebrk_4', 'fall_bonebrk_5', 'fall_bonebrk_6', 'fall_bonebrk_7', 'fall_bonebrk_8', 'fall_bonebrk_9', 'fall_bonebrk_10', 'fall_bonebrk_11', 'fall_bonebrk_12', 'fall_bonebrk_13', 'fall_bonebrk_14', 'fall_bonebrk_15', 'fall_bonebrk_16', 'fall_bonebrk_17', 'fall_bonebrk_18', 'fall_bonebrk_19', 'fall_bonebrk_20', 'fall_bonebrk_21', 'fall_er_date', 'fall_doctor_date', 'fall_otherfacility_date', 'fall_overnighthosp_date', 'siteuid', 'event', 'id']
+                // currentSeen = data.seen;
+                console.log(data)
+                // Your existing code for populating the tables remains the same
+                 // Populate Table A
+                 const table_a_columns = ['screenid', 'which_fuint', 'item_index', 'fall_injurybonebreak', 'fall_dislocatedjoint', 'fall_injuryhead', 'fall_cutbleeding', 'fall_cutbleeding_close', 'fall_sprainstrain', 'fall_bruiseswell', 'fall_otherinjury', 'fall_bonebrk_1', 'fall_bonebrk_2', 'fall_bonebrk_3', 'fall_bonebrk_4', 'fall_bonebrk_5', 'fall_bonebrk_6', 'fall_bonebrk_7', 'fall_bonebrk_8', 'fall_bonebrk_9', 'fall_bonebrk_10', 'fall_bonebrk_11', 'fall_bonebrk_12', 'fall_bonebrk_13', 'fall_bonebrk_14', 'fall_bonebrk_15', 'fall_bonebrk_16', 'fall_bonebrk_17', 'fall_bonebrk_18', 'fall_bonebrk_19', 'fall_bonebrk_20', 'fall_bonebrk_21', 'fall_er_date', 'fall_doctor_date', 'fall_otherfacility_date', 'fall_overnighthosp_date', 'siteuid', 'event', 'id']
 
                 $("#table_a").html("");
                 let table_a_header = "";
@@ -76,12 +77,12 @@
                 $("#table_a").append(table_a_header);
 
                 let table_a_body = "<tbody>";
-               
+
                 for (let i = 0; i < table_a_columns.length; i++) {
                     table_a_body += "<td>" + data.table_a[0][table_a_columns[i]] + "</td>";
                 }
                 table_a_body += "</tr>";
-                
+
                 table_a_body += "</tbody>";
                 $("#table_a").append(table_a_body);
 
@@ -110,75 +111,86 @@
                 $("#table_b").append(table_b_body);
             });
         }
+
+        function updateSeenButton() {
+            console.log(currentSeen==1)
+            if (currentSeen == 1) {
+            
+                $("#mark-match-btn").removeClass("btn-primary").addClass("btn-secondary").text("Unmark this record");
+            } else {
+                $("#mark-match-btn").removeClass("btn-secondary").addClass("btn-primary").text("Mark as matched");
+            }
+        }
+
+        $("#match_id").on("change", function() {
+            let selectedOption = $(this).find("option:selected");
+            console.log(selectedOption);
+            currentSeen = selectedOption.hasClass("seen") ? 1 : 0;
+            console.log(currentSeen);
+            updateSeenButton();
+        });
+
+        $("#mark-match-btn").on("click", function() {
+            let matchId = $("#match_id").val();
+            console.log(matchId);
+            if (matchId) {
+                $.post("/mark_match", {match_id: matchId, seen: currentSeen == 1 ? 0 : 1}, function() {
+                let selectedOption = $("#match_id").find("option:selected");
+                if (currentSeen == 1) {
+                selectedOption.removeClass("seen matched").addClass("not-matched");
+                currentSeen = 0;
+                } else {
+                selectedOption.removeClass("not-matched").addClass("seen matched");
+                currentSeen = 1;
+                }
+                updateSeenButton();
+                });
+                }
+            });
         $(".table-container").css("display", "block");
 
         $(".js-example-tags").select2({
-        tags: true
-        });
+        tags: true,
+        templateResult: function (data) {
+            var $result = $("<span></span>");
+            $result.text(data.text);
+
+            if ($(data.element).hasClass("matched")) {
+                $result.addClass("matched");
+            }
+            // if ($(data.element).hasClass("seen")) {
+            //     $result.addClass("seen");
+            // }
+            return $result;
+        },
+        templateSelection: function (data) {
+            var $selection = $("<span></span>");
+            $selection.text(data.text);
+
+            if ($(data.element).hasClass("matched")) {
+                $selection.addClass("matched");
+            }
+            // if ($(data.element).hasClass("seen")) {
+            //     $selection.addClass("seen");
+            // }
+            return $selection;
+        }
+    });
+
+
         $("#match_id").on("change input", function() {
             fetch_data($(this).val());
         }).on("input", function() {
             $(this).trigger("change");
         });
 
-    $(document).on("change", ".checkbox", function() {
-        let id = $(this).data("id");
-        let checked = $(this).is(":checked");
-        $.post("/update_match", {id: id, match: checked ? 1 : 0});
-
-    var matchIdSelect = document.getElementById('match_id');
-    var markMatchBtn = document.getElementById('mark-match-btn');
-
-    matchIdSelect.addEventListener('change', function() {
-            var selectedOption = this.options[this.selectedIndex];
-            if (selectedOption.classList.contains('not-matched')) {
-                selectedOption.classList.remove('not-matched');
-                selectedOption.classList.add('matched');
-                markMatchBtn.classList.remove('btn-secondary');
-                markMatchBtn.classList.add('btn-primary');
-                markMatchBtn.innerHTML = 'Mark as matched';
-            } else {
-                selectedOption.classList.remove('matched');
-                selectedOption.classList.add('not-matched');
-                markMatchBtn.classList.remove('btn-primary');
-                markMatchBtn.classList.add('btn-secondary');
-                markMatchBtn.innerHTML = 'Unmark';
-            }
+        // Your existing event handlers for the checkboxes remain the same
+        $(document).on("change", ".checkbox", function() {
+            let id = $(this).data("id");
+            let checked = $(this).is(":checked");
+            $.post("/update_match", {id: id, match: checked ? 1 : 0});
         });
-
-
-    markMatchBtn.addEventListener('click', function() {
-        var matchId = matchIdSelect.value;
-        if (matchId) {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        var seen = JSON.parse(xhr.responseText).seen;
-                        if (seen === 1) {
-                            alert('Match ID ' + matchId + ' has been marked as matched.');
-                            markMatchBtn.classList.remove('btn-primary');
-                            markMatchBtn.classList.add('btn-secondary');
-                            markMatchBtn.innerHTML = 'Unmark Match';
-                        } else {
-                            alert('Match ID ' + matchId + ' has been unmarked.');
-                             markMatchBtn.classList.remove('btn-secondary');
-                                markMatchBtn.classList.add('btn-primary');
-                                markMatchBtn.innerHTML = 'Mark as matched';
-                        }
-                        window.location.reload();
-                    } else {
-                        alert('There was an error marking the match as matched.');
-                    }
-                }
-            };
-            xhr.open('POST', '/mark_match/' + matchId);
-            xhr.send();
-            }
-        });
-                // // Set initial state of Mark as matched button based on selected option
-                // if (matchId
-    });
-</script>
+        </script>
 </body>
 </html>
+
