@@ -1,0 +1,628 @@
+Variable / Field Name,Prefix?,Suffix?,Form Name,Field Label,"Choices, Calculations, OR Slider Labels"
+participant,,,[redacted],Participant ID,"1, 2, …, 5451 (randomly recoded for this data submission)"
+site,,,[redacted],Healthcare system ID,"1, 2, …, 10 (randomly recoded for this data submission)"
+practice,,,[redacted],Practice ID,"1, 2, …, 86 (randomly recoded for this data submission)"
+intervention,,,[from practice database],Practice assigned to intervention?,"0, No | 1, Yes"
+practice_tertile,,,[from practice database],Tertile of practice size (1 is small),"N.B.: based on estimates provided by sites pre-randomization, used to constrain randomization but not reliable, do not interpret"
+practice_majwhite,,,[from practice database],Majority of practice patients are white?,"0, No | 1, Yes"
+practice_urban,,,[from practice database],Practice is urban?,"0, No | 1, Yes"
+screendate,,,screener,"Screening Date :
+Date postcard received at DCC or
+Reliant clinic visit date",redacted to # of days after enrollment
+fallenpastyear,,,screener,1. Have you fallen 2 or more times in the past year?,"1, Yes | 2, No | 3, Ambiguous | 8, Missing"
+hurtself,,,screener,2. Have you fallen and hurt yourself in the past year?,"1, Yes | 2, No | 3, Ambiguous | 8, Missing"
+afraidtofall,,,screener,3. Are you afraid that you might fall because of balance or walking problems?,"1, Yes | 2, No | 3, Ambiguous | 8, Missing"
+screenoutcome,,,screener,Screening Outcome:,"1, Complete: At least one 'yes' response | 2, Complete: All responses are 'no' | 3, Error"
+trk_secondary_outcomes,,,tracking_indicators,Selected for the Secondary Outcomes substudy,"0, N/A | 1, Yes | 2, No"
+trk_enrolled,,,tracking_indicators,Enrolled,"0, No | 1, Yes"
+trk_enroll_date,,,tracking_indicators,Enrollment date,redacted to # of days after enrollment
+trk_languagepreference,,,tracking_indicators,Language Preference,"1, English | 2. Spanish"
+trk_sc_status,,,tracking_indicators,Status change form: withdrawal status,"1, Intervention withdrawal | 2, Practice change | 3, Healthcare system change | 4, Medical record review only (passive participation) | 5, FULL STUDY WITHDRAWAL"
+trk_statuschg_date,,,tracking_indicators,Status change form: status change date,redacted to # of days after enrollment
+trk_sc_intervention_status,,,tracking_indicators,Status change form: intervention withdrawal status,"1, Intervention withdrawal | 2, Practice change | 3, Healthcare system change"
+trk_sc_intervention_withd_date,,,tracking_indicators,Status change form: intervention withdrawal date,redacted to # of days after enrollment
+trk_36mconsent_status,,,tracking_indicators,36-month consent status,"1, Yes (telephone and EMR) | 2, Yes (EMR only) | 3, No (full withdrawal) | 101, No, Interview Completed | 104, No, Partial Interview: Participant Refusal | 105, No, Partial Interview: Proxy Refusal | 130, No, Interview NOT completed: Participant refusal | 131, No, Interview NOT completed: Proxy refusal | 132, No, Interview NOT completed: Too Ill (terminally, prolonged illness, etc.) | 133, No, Interview NOT completed: Died, No Surrogate Interview | 134, No, Interview NOT completed: Unable to Contact within 5 attempts | 135, No, Interview NOT completed: Unable to Contact due to incorrect contact information | 137, No, Interview NOT completed: Participant requests change in participation (no longer wants to be part of study or change in follow-up) | 138, No, Interview NOT completed: Other | 801, Died, Interview Completed | 804, Died, Partial Interview: Participant Refusal | 805, Died, Partial Interview: Proxy Refusal | 830, Died, Interview NOT completed: Participant refusal | 831, Died, Interview NOT completed: Proxy refusal | 832, Died, Interview NOT completed: Too Ill (terminally, prolonged illness, etc.) | 833, Died, Interview NOT completed: Died, No Surrogate Interview | 834, Died, Interview NOT completed: Unable to Contact within 5 attempts | 835, Died, Interview NOT completed: Unable to Contact due to incorrect contact information | 837, Died, Interview NOT completed: Participant requests change in participation (no longer wants to be part of study or change in follow-up) | 838, Died, Interview NOT completed: Other, please provide details below"
+trk_death,,,tracking_indicators,Death,"0, No | 1, Yes"
+trk_deathdate,,,tracking_indicators,Date of Death,redacted to # of days after enrollment
+callahan1,,,patient_verbal_consent,APPLE,"1, Yes | 2, No"
+callahan2,,,patient_verbal_consent,TABLE,"1, Yes | 2, No"
+callahan3,,,patient_verbal_consent,PENNY,"1, Yes | 2, No"
+callahan4,,,patient_verbal_consent,What is the year? Correct: ,"1, Yes | 2, No"
+callahan5,,,patient_verbal_consent,What is the month? Correct:,"1, Yes | 2, No"
+callahan6,,,patient_verbal_consent,What is the day of the week? Correct:,"1, Yes | 2, No"
+callahan7,,,patient_verbal_consent,APPLE Recall Correct: ,"1, Yes | 2, No"
+callahan8,,,patient_verbal_consent,TABLE Recall Correct:,"1, Yes | 2, No"
+callahan9,,,patient_verbal_consent,PENNY Recall Correct:,"1, Yes | 2, No"
+callahan_score,,,patient_verbal_consent,CALCULATED SCORE = NUMBER OF ERRORS (0-6),"If([callahan4]='1',0,if([callahan4]='2',1,NaN))+ If([callahan5]='1',0,if([callahan5]='2',1,NaN))+ If([callahan6]='1',0,if([callahan6]='2',1,NaN))+ If([callahan7]='1',0,if([callahan7]='2',1,NaN))+ If([callahan8]='1',0,if([callahan8]='2',1,NaN))+ If([callahan9]='1',0,if([callahan9]='2',1,NaN))"
+bl_version,,,baseline_interview,Baseline Version #,"5, 5 (interviews starting 12/15/16) | 4, 4 (interviews starting 10/28/16) | 3, 3 (interviews starting 8/19/16) | 2, 2 (interviews starting 12/10/15) | 1, 1 (interviews July 2015 to 12/9/15)"
+bl_date,,,baseline_interview,Interview Date,redacted to # of days after enrollment
+time_start,,,baseline_interview,Time Interview Started,
+intv_type,,,baseline_interview,Type of Patient Interview,"1, Participant | 2, Surrogate"
+consentedby,,,baseline_interview,Consented by:,"1, Participant | 2, Surrogate with patient assent"
+calc_age,,,baseline_interview,Calculated Age,"rounddown((datediff([dob],[bl_date],""y"",""mdy"")),0)"
+gender,,,baseline_interview,Are you (he/she) (Gender) :,"1, Male | 2, Female"
+race,,,baseline_interview,"Do you consider yourself (himself/herself) to be:
+
+SURROGATE: Would he/she consider himself/herself to be:","1, White | 2, Black | 3, Other | 97, Refused | 98, DK"
+ethnicity,,,baseline_interview,"Do you consider yourself (himself/herself) to be:
+
+SURROGATE: Would he/she consider himself/herself to be:","1, Hispanic/Latino | 2, Non-Hispanic/Latino | 7, Refused | 8, DK"
+live_alone,,,baseline_interview,Do(es) you (he/she) currently live alone?,"1, Yes | 2, No | 7, Refused | 8, DK"
+housing,,,baseline_interview,What type of housing do you (he/she) live in?,"1, Single family home | 2, Apartment/town house, not age restricted | 3, Senior housing/55+ community | 4, Assisted living | 5, Other (mobile home/boat, specify) | 7, Refused | 8, DK"
+marital_status,,,baseline_interview,Are you (he/she) currently,"1, Married | 2, Never married | 3, Widowed | 4, Divorced | 5, Other | 7, Refused | 8, DK"
+height,,,baseline_interview,How tall are you ( is he/she)? ,"1, Height known | 7, Refused | 8, Unknown"
+height_ft,,,baseline_interview,How tall are you (he/she)? FEET,
+height_in,,,baseline_interview,How tall are you (he/she)? INCHES,
+weight,,,baseline_interview,What is your (his/her) current weight?,"1, Weight known | 7, Refused | 8, Unknown"
+weight_lbs,,,baseline_interview,What is your (his/her) current weight? POUNDS,
+education_highest,,,baseline_interview,What was the highest level of education you (he/she) attained?,"1 = 'High school graduate or less' | 2 = 'Some college or equivalent' | 3 = 'College graduate or higher' | 	97 = 'Refused' | 98 = ""Don't know"""
+physical_activity,,,baseline_interview,How would you (he/she) describe your (his/her) leisure time physical activity over the past month?,"1, I did no regular physical activity | 2, I did some regular physical activity like light walking, nonstrenuous cycling or gardening approximately once a week. | 3, I regularly did physical activity like brisk walking, bicycling or sports more than one time per week. | 7, Refused | 8, DK"
+srh,,,baseline_interview,"Would you (he/she) say your (his/her) health is excellent, very good, good, fair, or poor?","1, Excellent | 2, Very Good | 3, Good | 4, Fair | 5, Poor | 7, Refused | 8, DK"
+medicalalert1,,,baseline_interview,Do you have a medical alert system or personal emergency button you can push if you fall and need help? Sometimes people wear them around their neck or on their wrist.,"1, Yes | 2, No | 7, Refused | 8, DK"
+medicalalert1a,,,baseline_interview,"If YES, Have you had to use the system in the past 12 months (or year)?","1, Yes | 2, No | 7, Refused | 8, DK"
+hypertension,,,baseline_interview,Has a doctor ever told you (him/her) that you (he/she) have high blood pressure or hypertension?,"1, Yes | 2, No | 7, Refused | 8, DK"
+hypertension_meds,,,baseline_interview,Are you (he/she) currently taking any medicine for your (his/her) high blood pressure?,"1, Yes | 2, No | 7, Refused | 8, DK"
+heart_condition,,,baseline_interview,"had a heart attack, or coronary, or myocardial infarction AND you (he/she) had to be hospitalized?","1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+heartfailure_chf,,,baseline_interview,had heart failure or congestive heart failure?,"1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+stroke,,,baseline_interview,had a stroke or brain hemorrhage AND had to be hospitalized?,"1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+cancer,,,baseline_interview,"had cancer or a malignant tumor, excluding minor skin cancers?","1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+diabetes,,,baseline_interview,have diabetes?,"1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+parkinsons,,,baseline_interview,have Parkinson's Disease?,"1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+lung_disease,,,baseline_interview,"have chronic lung disease such as chronic bronchitis, COPD, asthma, or emphysema?","1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+brkfrac_hip,,,baseline_interview,had a broken or fractured hip AND had to be hospitalized,"1, Yes | 3, Suspect or Possible | 2, No | 7, Refused | 8, DK"
+brkfracturebone_age50,,,baseline_interview,"Since the age of 50, have you (he/she) ever been told by a doctor, nurse, therapist, or medical assistant that you had broken or fractured any other bones?","1, Yes | 3, Suspect or possible | 2, No | 7, Refused | 8, DK"
+arthritis_rheumatism,,,baseline_interview,"During the last 12 months, have you (he/she) seen a doctor specifically for arthritis or rheumatism?","1, Yes | 3, Suspect or possible | 2, No | 7, Refused | 8, DK"
+numchron,,,[computed in processing],Number of chronic conditions,(hypertension_meds=1) + (heart_condition=1) + … + (arthritis_rheumatism=1)  [possible values 0-11]
+walkaid_insidehome,,,baseline_interview,"Do you (he/she) usually use a cane, walker or other device when walking inside your (his/her) home?","1, No, walks without device | 2, No, doesn't walk (i.e., uses wheelchair) | 3, Yes, cane | 4, Yes, walker | 5, Yes, Other | 7, Refused | 8, DK"
+walkaid_outside,,,baseline_interview,"Do you (he/she) usually use a cane, walker or other device when walking outside your (his/her) home?","1, No, walks without device | 2, No, doesn't walk (i.e., uses wheelchair) | 3, Yes, cane | 4, Yes, walker | 5, Yes, Other | 7, Refused | 8, DK"
+fallpastyear,,,baseline_interview,Have you (he/she) fallen in the past year? [LAST 12 MONTHS],"1, Yes | 2, No | 7, Refused | 8, DK"
+fallpastyear_times,,,baseline_interview,How many times have you (he/she) fallen?,
+fallpastyear_land,,,baseline_interview,"For any fall, did you (he/she) land on the floor, ground, or other lower level when you (he/she) fell?","1, Yes | 2, No | 7, Refused | 8, DK"
+fallseff_cleaning,,,baseline_interview,cleaning the house (doing things like sweeping or dusting)? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_dress,,,baseline_interview,getting dressed or undressed? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_meals,,,baseline_interview,preparing simple meals? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_bath,,,baseline_interview,taking a bath or shower? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_shop,,,baseline_interview,doing simple shopping? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_chair,,,baseline_interview,getting in and out of a chair? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_stairs,,,baseline_interview,going up and down stairs? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_walkneighborhood,,,baseline_interview,walking around in your neighborhood? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_reachcabinet,,,baseline_interview,reaching into cabinets or closets? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fallseff_phone,,,baseline_interview,going to answer the telephone before it stops ringing? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+eddep_worthless,,,baseline_interview,I felt worthless,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_lookforward,,,baseline_interview,I felt that I had nothing to look forward to,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_helpless,,,baseline_interview,I felt helpless,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_sad,,,baseline_interview,I felt sad,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_failure,,,baseline_interview,I felt like a failure,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_depressed,,,baseline_interview,I felt depressed,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_unhappy,,,baseline_interview,I felt unhappy,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_hopeless,,,baseline_interview,I felt hopeless,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_fearful,,,baseline_interview,I felt fearful,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_anxiety,,,baseline_interview,I found it hard to focus on anything other than my anxiety,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_overwhelm,,,baseline_interview,My worries overwhelmed me,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_uneasy,,,baseline_interview,I felt uneasy,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_nervous,,,baseline_interview,I felt nervous,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_helpanxiety,,,baseline_interview,I felt like I needed help for my anxiety,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_anxious,,,baseline_interview,I felt anxious,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+eddep_tense,,,baseline_interview,I felt tense,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+euroqol_mobility,,,baseline_interview,First I'd like to ask you about mobility. Would you say that:,"1, You have (He/she has) no problems walking? | 2, You have (He/she has) slight problems walking? | 3, You have (He/she has) moderate problems walking? | 4, You have (He/she has) severe problems walking? | 5, You (He/she has) are unable to walk? | 7, Refused | 8, DK"
+euroqol_selfcare,,,baseline_interview,Next I'd like to ask you about (his/her) self-care. Would you say that:,"1, You have (He/she has) no problems washing or dressing yourself? | 2, You have (He/she has) slight problems washing or dressing yourself? | 3, You have (He/she has) moderate problems washing or dressing yourself? | 4, You have (He/she has) severe problems washing or dressing yourself? | 5, You (He/she has) are unable to wash or dress yourself? | 7, Refused | 8, DK"
+euroqol_usualactivity,,,baseline_interview,"Next I'd like to ask you about your (his/her) usual activities, for example work, study, housework, family or leisure activities. Would you say that: ","1, You have (He/she has) no problems doing your usual activities? | 2, You have (He/she has) slight problems doing your usual activities? | 3, You have(He/she has)  moderate problems doing your usual activities? | 4, You have (He/she has) severe problems doing your usual activities? | 5, You are (He/she is) unable to do your usual activities? | 7, Refused | 8, DK"
+euroqol_pain,,,baseline_interview,Next I'd like to ask you about pain or discomfort. Would you say that: ,"1, You have (He/she has) no pain or discomfort? | 2, You have (He/she has) slight pain or discomfort? | 3, You have (He/she has) moderate pain or discomfort? | 4, You have(He/she has)  severe pain or discomfort? | 5, You have (He/she has) extreme pain or discomfort? | 7, Refused | 8, DK"
+euroqol_anxiety_dep,,,baseline_interview,Finally I'd like to ask you about anxiety or depression. Would you say that:,"1, You are (He/she is) not anxious or depressed? | 2, You are (He/she is) slightly anxious or depressed? | 3, You are (He/she is) moderately anxious or depressed? | 4, You are (He/she is) severely anxious or depressed? | 5, You are (He/she is) extremely anxious or depressed? | 7, Refused | 8, DK"
+euroqol_eqvastask,,,baseline_interview,"[PARTICIPANT]:
+Now, I would like to ask you to say how good or bad your health is TODAY.
+
+I'd like you to try to picture in your mind a scale that looks a bit like a thermometer. Can you do that? The best health you can imagine is marked 100 (one hundred) at the top of the scale and the worst health you can imagine is marked 0 (zero) at the bottom.
+
+I would now like you to tell me the point on this scale where you would put your health today.
+
+[SURROGATE]:
+I would like to know how good or bad you think ([screen_arm_1][trk_fullname]) would say his/her health is TODAY, if he/she were able to tell us)
+
+I'd like you to try to picture in your mind a scale that looks a bit like a thermometer. Can you do that? The best health you can imagine is marked 100 (one hundred) at the top of the scale and the worst health you can imagine is marked 0 (zero) at the bottom.
+
+I would now like you to tell me the point on this scale where you would put his/her health today.",
+llfd_completed,,,baseline_interview,Was the Late Life Function and Disability Instrument administered? ,"1, Yes | 2, No"
+llfd_disability,,,baseline_interview,LLDFI disability score ,
+llfd_disability_se,,,baseline_interview,LLDFI disability standard error,
+llfd_function,,,baseline_interview,LLDFI function score ,
+llfd_function_se,,,baseline_interview,LLDFI function standard error,
+er_pastyear,,,baseline_interview,"1. In the past year, did you (he/she) go to the emergency room for any reason?","1, Yes | 2, No | 7, Refused | 8, DK"
+er_pastyear_n,,,baseline_interview,1a. How many times did you (he/she) go to the emergency room in the past year?,
+hospadm_pastyear,,,baseline_interview,"1. In the past year, were you (he/she) admitted for an overnight stay, or longer, in the hospital for any reason?","1, Yes | 2, No | 7, Refused | 8, DK"
+hospadm_pastyear_n,,,baseline_interview,1a. How many times were you (he/she) admitted to the hospital in the past year?,
+nhconvarehab_pastyear,,,baseline_interview,"1. In the past year, have you (he/she) stayed overnight in a nursing home, convalescent home, or rehab facility?","1, Yes | 2, No | 7, Refused | 8, DK"
+nhconvarehab_pastyear_n,,,baseline_interview,"1a. How many times were you (he/she) admitted to a nursing home, convalescent home, or rehab facility in the past year?",
+homecare_pastyear,,,baseline_interview,"1. In the past year, have you (he/she) had a visit from a home care worker such as a visiting nurse, homemaker, home health aide, etc.?","1, Yes | 2, No | 7, Refused | 8, DK"
+hc_visitingnurse,,,baseline_interview,Visiting Nurse,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc_pt,,,baseline_interview,Physical Therapist,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc_ot,,,baseline_interview,Occupational Therapist,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc_homeaid,,,baseline_interview,Home Health Aide,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc_homemaker,,,baseline_interview,Homemaker,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc_other,,,baseline_interview,Other,"1, Yes | 2, No | 7, Refused | 8, DK"
+transportation1,,,baseline_interview,1. How do(es) you (he/she) travel to Doctor's appointments? ,"1, Drive Self | 2, Driven by family member, friend, or other | 3, Public Transportation | 4, Other | 7, Refused | 8, DK"
+transportation2,,,baseline_interview,"2. When you (he/she) attend doctor appointments, does a family member or friend usually sit with you (him/her) during the visit?","1, Yes | 2, No | 7, Refused | 8, DK"
+transportation2a,,,baseline_interview,[IF YES] 2a. Who attends doctor appointments with you (him/her)?,"1, Spouse | 2, Son or Daughter | 3, Niece or Nephew | 4, Grandchild | 5, Brother or Sister | 6, Friend/Neighbor | 7, Brother or Sister | 8, Other relative (please specify):"
+hc1,,,baseline_interview,"1. Do you (he/she) have traditional Medicare or a Medicare Advantage plan?
+[NEED TO ADD DETAILS INTERVIEWERS COULD USE IF A SUBJECT IS HAVING TROUBLE FIGURE IT OUT]","1, Traditional | 2, Advantage | 3, No | 7, Refused | 8, DK"
+hc2,,,baseline_interview,"2. Part A of Medicare covers most hospital expenses. Part B covers many Doctor expenses, and the premium may be deducted from Social Security.  Are you (he/she) covered under Part B of Medicare?","1, Yes | 2, No | 7, Refused | 8, DK"
+hc3,,,baseline_interview,"3. Some people have chosen a Medicare Advantage plan (for example, a Medicare HMO or PPO health plan) instead of traditional Medicare.  Are you (he/she) currently covered by a Medicare Advantage plan?","1, Yes | 2, No | 7, Refused | 8, DK"
+hc4,,,baseline_interview,4. Are you (he/she) covered by your (his/her) State's medical assistance (Medicaid) program?  This is also called Title 19.,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc5,,,baseline_interview,5. Are you (he/she) covered by any other public assistance program that pays for Medical Care?,"1, Yes | 2, No | 7, Refused | 8, DK"
+hc6,,,baseline_interview,"6. Not counting Medicare and the other programs we just talked about, do you (he/she) have any other health insurance or medical insurance that pays for hospital or doctor bills, such as VA or Medi-gap, or a Medicare Supplemental?","1, Yes | 2, No | 7, Refused | 8, DK"
+finances,,,baseline_interview,How difficult is it for you (his/her) / (your family) to meet monthly payments on your (his/her) (your family's) bills?,"1, Not at all difficult | 2, Not very difficult | 3, Somewhat difficult | 4, Very difficult | 5, Completely difficult | 7, Refused | 8, DK"
+surrogate_relation,,,surrogate_verbal_consent,Can I confirm what your relationship is to [screen_arm_1][trk_fullname] ?,"1, Spouse | 2, Son or Daughter | 3, Niece or Nephew | 4, Grandchild | 5, Brother or Sister | 6, Friend/Neighbor | 7, OTHER RELATIVE (please specify)"
+proxy_relationtime,,,surrogate_verbal_consent,How long have you known  [screen_arm_1][trk_fullname]?,
+proxy_relationtime_categ,,,surrogate_verbal_consent,Time known participant,"1, Months | 2, Years"
+proxy_facecontacts,,,surrogate_verbal_consent,Face-to-Face contacts,
+proxy_telecontacts,,,surrogate_verbal_consent,Telephone contacts,
+s_gender,,,baseline_interview,Surrogate Gender,"1, Male | 2, Female"
+s_race,,,baseline_interview,Race of surrogate,"1, White | 2, Black | 3, Other | 97, Refused | 98, DK"
+s_ethnicity,,,baseline_interview,Ethnicity of surrogate,"1, Hispanic/Latino | 2, Non-Hispanic/Latino | 7, Refused | 8, DK"
+time_ended,,,baseline_interview,Time Interview Ended,
+fu_intdate,"f#_ (# = 4,8,…,44)",,follow-up,Follow-up Interview Date,redacted to # of days after enrollment
+fu_inttype,"f#_ (# = 4,8,…,44)",,follow-up,Follow-up Type of Interview,"1, Participant | 2, Surrogate"
+fu_int_starttime,"f#_ (# = 4,8,…,44)",,follow-up,Follow-up Interview Time,
+fup_outcome,"f#_ (# = 4,8,…,44)",,follow-up,Follow-up Interview Disposition,"1, Completed | 4, Partial Interview: Participant Refusal | 5, Partial Interview: Proxy Refusal | 6, Partial Interview: Unable to re-contact for completion | 30, Interview NOT completed: Participant refusal | 31, Interview NOT completed: Proxy refusal | 37, Interview NOT completed: Participant requests change in participation (no longer wants to be part of study or change in follow-up) | 32, Interview NOT completed: Too Ill (terminally, prolonged illness, etc.) | 33, Interview NOT completed: Died, No Surrogate Interview | 34, Interview NOT completed: Unable to Contact within 5 attempts | 35, Interview NOT completed: Unable to Contact due to incorrect contact information | 39, Interview NOT completed: Contact made, but no interview | 36, Interview NOT completed: Administrative reasons (e.g., window) | 38, Interview NOT completed: Other, please provide details below"
+calendars,"f#_ (# = 4,8,…,44)",,follow-up,Do you have fall calendars to review?,"1, Yes | 2, No | 7, Refused | 8, DK"
+calendars_yes,"f#_ (# = 4,8,…,44)",,follow-up,"If YES, have you (he/she) been recording information about falls (daily yes/no and end of the month questions)?","1, Yes | 2, No | 7, Refused | 8, DK"
+calendar_usage,"f#_ (# = 4,8,…,44)",,follow-up,Calendar Use (interviewer coded),"1, Daily | 2, Intermittently (weekly or Monthly) | 3, For Falls Only | 4, Not used - Don't need it/like it | 5, Not used - Never fall | 6, I use my own calendar | 7, Other"
+fall_past4m,"f#_ (# = 4,8,…,44)",,follow-up,1. Have (Had) you (he/she) fallen in the past 4 months? (or since last contact [screen_arm_1][trk_lastcontact_date])?,"1, Yes | 2, No | 7, Refused | 8, DK"
+fall_past4m_times,"f#_ (# = 4,8,…,44)",,follow-up,1a. How many times have (had) you (he/she) fallen?,"1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 or more | 7, Refused | 8, DK"
+fall_past4m_injured,"f#_ (# = 4,8,…,44)",,follow-up,1b. Were (Was) you (he/she) injured in any fall in the past 4 months (or since last contact [screen_arm_1][trk_lastcontact_date])?,"1, Yes | 2, No | 7, Refused | 8, DK"
+fall_number,"f#_ (# = 4,8,…,44)",,follow-up,"1c. IF YES, How many falls did you (he/she) have that led to an injury:",
+hosp_overnight,"f#_ (# = 4,8,…,44)",,follow-up,Hospitalized overnight for any (other) reason the past 4 months (since [screen_arm_1][trk_lastcontact_date])? ,"1, Yes | 2, No | 7, Refused | 8, DK"
+hosp_overnight_times,"f#_ (# = 4,8,…,44)",,follow-up,"If Yes,  Overnight Hospitalization, number of times",
+hosp_onight_admdate,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",follow-up [redacted],"Overnight Hospitalization #n, Admit Date",redacted to # of days after enrollment
+hosp_onight_admdate_known,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",[computed in processing],Amount of date information provided by respondent,"0, no information | 1, year only | 2, month and year | 3, fully known"
+hosp_onight_admdate_min,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",[computed in processing],Earliest date consistent with data and metadata,redacted to # of days after enrollment
+hosp_onight_admdate_max,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",[computed in processing],Latest date consistent with data and metadata,redacted to # of days after enrollment
+hosp_onight_dscdate,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",follow-up [redacted],"Overnight Hospitalization #n, Discharge Date",redacted to # of days after enrollment
+hosp_onight_dscdate_known,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",[computed in processing],Amount of date information provided by respondent,"0, no information | 1, year only | 2, month and year | 3, fully known"
+hosp_onight_dscdate_min,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",[computed in processing],Earliest date consistent with data and metadata,redacted to # of days after enrollment
+hosp_onight_dscdate_max,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,9)",[computed in processing],Latest date consistent with data and metadata,redacted to # of days after enrollment
+nrscnvrhb,"f#_ (# = 4,8,…,44)",,follow-up,"Have (Did) you (he/she)  stayed overnight in a nursing home, convalescent home or rehab facility in the past 4  months ([screen_arm_1][trk_lastcontact_date])? ","1, Yes | 2, No | 7, Refused | 8, DK"
+nrscnvrhb_number,"f#_ (# = 4,8,…,44)",,follow-up,"If yes, number of times:",
+nrscnvrhb_admdate,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",follow-up [redacted],"Overnight in a nursing home, convalescent home or rehab facility - Admit Date #1",redacted to # of days after enrollment
+nrscnvrhb_admdate_known,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",[computed in processing],Amount of date information provided by respondent,"0, no information | 1, year only | 2, month and year | 3, fully known"
+nrscnvrhb_admdate_min,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",[computed in processing],Earliest date consistent with data and metadata,redacted to # of days after enrollment
+nrscnvrhb_admdate_max,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",[computed in processing],Latest date consistent with data and metadata,redacted to # of days after enrollment
+nrscnvrhb_dscdate,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",follow-up [redacted],"Overnight in a nursing home, convalescent home or rehab facility - Discharge Date #1",redacted to # of days after enrollment
+nrscnvrhb_dscdate_known,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",[computed in processing],Amount of date information provided by respondent,"0, no information | 1, year only | 2, month and year | 3, fully known"
+nrscnvrhb_dscdate_min,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",[computed in processing],Earliest date consistent with data and metadata,redacted to # of days after enrollment
+nrscnvrhb_dscdate_max,"f#_ (# = 4,8,…,44)","_# (# = 1,2,…,5)",[computed in processing],Latest date consistent with data and metadata,redacted to # of days after enrollment
+fu_fallseff_cleaning,"f#_ (# = 4,8,…,44)",,follow-up,cleaning the house (doing things like sweeping or dusting)? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_dress,"f#_ (# = 4,8,…,44)",,follow-up,getting dressed or undressed? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_meals,"f#_ (# = 4,8,…,44)",,follow-up,preparing simple meals? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_bath,"f#_ (# = 4,8,…,44)",,follow-up,taking a bath or shower? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_shop,"f#_ (# = 4,8,…,44)",,follow-up,doing simple shopping? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_chair,"f#_ (# = 4,8,…,44)",,follow-up,getting in and out of a chair? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_stairs,"f#_ (# = 4,8,…,44)",,follow-up,going up and down stairs? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_walkneighborhood,"f#_ (# = 4,8,…,44)",,follow-up,walking around in your neighborhood? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_reachcabinet,"f#_ (# = 4,8,…,44)",,follow-up,reaching into cabinets or closets? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_fallseff_phone,"f#_ (# = 4,8,…,44)",,follow-up,going to answer the telephone before it stops ringing? Are you (he/she):,"1, Not concerned at all | 2, Somewhat concerned | 3, Fairly concerned | 4, Very concerned | 7, Refused | 8, Don't Know"
+fu_eddep_worthless,"f#_ (# = 4,8,…,44)",,follow-up,I felt worthless,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_lookforward,"f#_ (# = 4,8,…,44)",,follow-up,I felt that I had nothing to look forward to,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_helpless,"f#_ (# = 4,8,…,44)",,follow-up,I felt helpless,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_sad,"f#_ (# = 4,8,…,44)",,follow-up,I felt sad,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_failure,"f#_ (# = 4,8,…,44)",,follow-up,I felt like a failure,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_depressed,"f#_ (# = 4,8,…,44)",,follow-up,I felt depressed,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_unhappy,"f#_ (# = 4,8,…,44)",,follow-up,I felt unhappy,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_hopeless,"f#_ (# = 4,8,…,44)",,follow-up,I felt hopeless,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_fearful,"f#_ (# = 4,8,…,44)",,follow-up,I felt fearful,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_anxiety,"f#_ (# = 4,8,…,44)",,follow-up,I found it hard to focus on anything other than my anxiety,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_overwhelm,"f#_ (# = 4,8,…,44)",,follow-up,My worries overwhelmed me,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_uneasy,"f#_ (# = 4,8,…,44)",,follow-up,I felt uneasy,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_nervous,"f#_ (# = 4,8,…,44)",,follow-up,I felt nervous,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_helpanxiety,"f#_ (# = 4,8,…,44)",,follow-up,I felt like I needed help for my anxiety,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_anxious,"f#_ (# = 4,8,…,44)",,follow-up,I felt anxious,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_eddep_tense,"f#_ (# = 4,8,…,44)",,follow-up,I felt tense,"1, Never | 2, Rarely | 3, Sometimes | 4, Often | 5, Always | 7, Refused | 8, Don't Know"
+fu_euroqol_mobility,"f#_ (# = 4,8,…,44)",,follow-up,First I'd like to ask you about mobility. Would you say that:,"1, You have (He/she has) no problems walking? | 2, You have (He/she has) slight problems walking? | 3, You have (He/she has) moderate problems walking? | 4, You have (He/she has) severe problems walking? | 5, You (He/she has) are unable to walk? | 7, Refused | 8, DK"
+fu_euroqol_selfcare,"f#_ (# = 4,8,…,44)",,follow-up,Next I'd like to ask you about (his/her) self-care. Would you say that: ,"1, You have (He/she has) no problems washing or dressing yourself? | 2, You have (He/she has) slight problems washing or dressing yourself? | 3, You have (He/she has) moderate problems washing or dressing yourself? | 4, You have (He/she has) severe problems washing or dressing yourself? | 5, You (He/she has) are unable to wash or dress yourself? | 7, Refused | 8, DK"
+fu_euroqol_usualactivity,"f#_ (# = 4,8,…,44)",,follow-up,"Next I'd like to ask you about your (his/her) usual activities, for example work, study, housework, family or leisure activities. Would you say that: ","1, You have (He/she has) no problems doing your usual activities? | 2, You have (He/she has) slight problems doing your usual activities? | 3, You have(He/she has)  moderate problems doing your usual activities? | 4, You have (He/she has) severe problems doing your usual activities? | 5, You are (He/she is) unable to do your usual activities? | 7, Refused | 8, DK"
+fu_euroqol_pain,"f#_ (# = 4,8,…,44)",,follow-up,Next I'd like to ask you about pain or discomfort. Would you say that: ,"1, You have (He/she has) no pain or discomfort? | 2, You have (He/she has) slight pain or discomfort? | 3, You have (He/she has) moderate pain or discomfort? | 4, You have(He/she has)  severe pain or discomfort? | 5, You have (He/she has) extreme pain or discomfort? | 7, Refused | 8, DK"
+fu_euroqol_anxiety_dep,"f#_ (# = 4,8,…,44)",,follow-up,Finally I'd like to ask you about anxiety or depression. Would you say that :,"1, You are (He/she is) not anxious or depressed? | 2, You are (He/she is) slightly anxious or depressed? | 3, You are (He/she is) moderately anxious or depressed? | 4, You are (He/she is) severely anxious or depressed? | 5, You are (He/she is) extremely anxious or depressed? | 7, Refused | 8, DK"
+fu_euroqol_eqvastask,"f#_ (# = 4,8,…,44)",,follow-up,"[PARTICIPANT]:
+
+Now, I would like to ask you to say how good or bad your health is TODAY.
+
+I'd like you to try to picture in your mind a scale that looks a bit like a thermometer. Can you do that? The best health you can imagine is marked 100 (one hundred) at the top of the scale and the worst health you can imagine is marked 0 (zero) at the bottom.
+
+I would now like you to tell me the point on this scale where you would put your health today.
+
+[SURROGATE]:
+
+I would like to know how good or bad you think ([screen_arm_1][trk_fullname]) would say his/her health is TODAY, if he/she were able to tell us)
+
+I'd like you to try to picture in your mind a scale that looks a bit like a thermometer. Can you do that? The best health you can imagine is marked 100 (one hundred) at the top of the scale and the worst health you can imagine is marked 0 (zero) at the bottom.
+
+I would now like you to tell me the point on this scale where you would put his/her health today.",
+fu_llfd_completed,"f#_ (# = 4,8,…,44)",,follow-up,Was the Late Life Function and Disability Instrument administered? ,"1, Yes | 2, No | 7, Refused | 8, DK"
+fu_llfd_disability,"f#_ (# = 4,8,…,44)",,follow-up,LLDFI disability score ,
+fu_llfd_disability_se,"f#_ (# = 4,8,…,44)",,follow-up,LLDFI disability standard error,
+fu_llfd_function,"f#_ (# = 4,8,…,44)",,follow-up,LLDFI function score ,
+fu_llfd_function_se,"f#_ (# = 4,8,…,44)",,follow-up,LLDFI function standard error,
+fu_respondent,"f#_ (# = 4,8,…,44)",,follow-up,"Who provided the answers for this questionnaire? (please select the best option)
+
+Designated Surrogate: [screen_arm_1][trk_surrogate_name] ","1, Participant | 2, Designated Surrogate (who provided consent for STRIDE participation or assisted with previous follow-up interviews or participant specified at Baseline) | 3, Other (New Surrogate - never provided information to STRIDE before  - complete next page before ending interview)"
+furesp_othrel_relation,"f#_ (# = 4,8,…,44)",,follow-up,"What is your relationship  to the participant?
+Other Surrogate: Relationship:","1, Spouse | 2, Son or Daughter | 3, Niece or Nephew | 4, Grandchild | 5, Brother or Sister | 6, Friend/Neighbor | 8, Other relative (please specify):"
+furesp_othrel_months,"f#_ (# = 4,8,…,44)",,follow-up,Other surrogate: How long have you known the participant? [screen_arm_1][trk_fullname],
+furesp_othrel_categ,"f#_ (# = 4,8,…,44)",,follow-up,"Other Surrogate: How long have you known participant?
+Category","1, Months | 2, Years | 7, Refused | 8, Dk"
+furesp_othrel_facecontacts,"f#_ (# = 4,8,…,44)",,follow-up,"Other Surrogate: How many days per week (0-7) do you see and/or talk with [screen_arm_1][trk_fullname]?
+
+Face-to-Face contacts:",
+furesp_othrel_telecontacts,"f#_ (# = 4,8,…,44)",,follow-up,"Other Surrogate: How many days per week (0-7) do you see and/or talk with [screen_arm_1][trk_fullname]?
+
+Telephone Contacts:",
+furesp_othrel_gender,"f#_ (# = 4,8,…,44)",,follow-up,Other Surrogate: Gender,"1, Male | 2, Female | 7, Refused | 8, DK"
+furesp_othrel_race,"f#_ (# = 4,8,…,44)",,follow-up,"Do you consider yourself to be:
+Other Surrogate: Race","1, White | 2, Black | 3, Other | 97, Refused | 98, DK"
+furesp_othrel_ethnicity,"f#_ (# = 4,8,…,44)",,follow-up,"Do you consider yourself to be:
+
+Other Surrogate: Ethnicity","1, Hispanic/Latino | 2, Non-Hispanic/Latino | 7, Refused | 8, DK"
+furesp_othrel_age,"f#_ (# = 4,8,…,44)",,follow-up,Other Surrogate: How old are you?,
+furesp_othrel_education,"f#_ (# = 4,8,…,44)",,follow-up,"Other Surrogate:
+What was the last grade you completed in school?","1 = 'High school graduate or less' | 2 = 'Some college or equivalent' | 3 = 'College graduate or higher' | 	97 = 'Refused' | 98 = ""Don't know"""
+fu_int_endtime,"f#_ (# = 4,8,…,44)",,follow-up,Follow-up Interview End Time,
+death1,"f#_ (# = 4,8,…,44)",,follow-up [redacted],If death occurred in hospital: When was s/he admitted to the hospital?,redacted to # of days after enrollment
+death1_known,"f#_ (# = 4,8,…,44)",,[computed in processing],Amount of date information provided by respondent,"0, no information | 1, year only | 2, month and year | 3, fully known"
+death1_min,"f#_ (# = 4,8,…,44)",,[computed in processing],Earliest date consistent with data and metadata,redacted to # of days after enrollment
+death1_max,"f#_ (# = 4,8,…,44)",,[computed in processing],Latest date consistent with data and metadata,redacted to # of days after enrollment
+death2,"f#_ (# = 4,8,…,44)",,follow-up,Was someone with your (relationship) when (he/she) died?,"1, Yes | 2, No | 7, Refused | 8, Don't Know"
+death2a,"f#_ (# = 4,8,…,44)",,follow-up,How long was it between when ([screen_arm_1][trk_fullname]) was last seen alive and when (he/she) died? ,
+death3,"f#_ (# = 4,8,…,44)",,follow-up,"Did ([screen_arm_1][trk_fullname]) complain of any symptoms, such as chest pain, headache, extreme tiredness, or lack of appetite any time before (his/her) death?","1, Yes | 2, No | 7, Refused | 8, Don't Know"
+death3a,"f#_ (# = 4,8,…,44)",,follow-up,"If yes, Please describe:",
+death4,"f#_ (# = 4,8,…,44)",,follow-up,"What action, if any were taken for the symptom(s), such as taking medications, CPR, or going to the doctor? ",
+scored_FES,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],Scored FES (at most 3 missing items),
+scored_PROMISanx,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],Scored PROMISanx (at most 2 missing items),
+scored_PROMISdep,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],Scored PROMISdep (at most 2 missing items),
+scored_LLFDIfn,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],Scored LLFDIfn,
+scored_LLFDIfnSE,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],LLFDIfn standard error,
+scored_LLFDIdis,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],Scored LLFDIdis,
+scored_LLFDIdisSE,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],LLFDIdis standard error,
+EQoL_index_f0,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],"EuroQol EQ-5D-5L index score (computed with Tobit model of Pickard et al, see https://doi.org/10.1016/j.jval.2019.02.009)",
+EQoL_state_f0,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],EuroQol EQ-5D-5L state,
+EQoL_VAS_f0,,"_f# (# = 0, 4, …, 44; 0 is baseline)",[computed in processing],EuroQol EQ VAS,
+ai_assess_date,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,EDC Assessment Date,redacted to # of days after enrollment
+ai_assess_type,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Assessment Type,1 = 'Initial Assessment' | 6 = '6-Month Assessment' | 12 = '12-Month Assessment' | 24 = '24-Month Assessment' | 36 = '36-Month Assessment' | 2 = 'ad hoc'
+ai_assess_loca,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Assessment Location,1 = 'Telephone' | 2 = 'Home Visit' | 3 = 'Clinical Visit'
+pe_sppb,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,SPPB completed?,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_sppb_chair,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,SPPB Chair Stand (0-4),
+pe_sppb_bal,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,SPPB Balance (0-4),
+pe_sppb_gaitspeed,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,SPPB Gait Speed (0-4),
+pe_sppb_total,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,SPPB Total (0-12),
+pe_unsafe_gait,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Unsafe gait,1 = 'No' | 2 = 'Yes - Asymmetry' | 3 = 'Yes - Weakness' | 9 = 'Not assessed'
+pe_cognitive,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Was Cognition assessed?,1 = 'Yes' | 2 = 'No'
+pe_3itemrecall,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,3-item recall (score up to 3),
+pe_clocktest,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Clock drawing test (score up to 2),
+pe_mini_cog,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Mini-Cog Total Score (scored 0-5),
+pe_bp,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Was BP assessed?,1 = 'Yes' | 2 = 'No'
+pe_bp_supine_systolic,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,BP Supine - Systolic mmHg,
+pe_bp_supine_diastolic,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,BP Supine - Diastolic mmHg,
+pe_hr_supine,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,HR Supine,
+pe_bp_stand1_systolic,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,BP Standing 1minute - Systolic mmHg,
+pe_bp_stand1_diastolic,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,BP Standing 1minute - Diastolic mmHg,
+pe_hr_stand1,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,HR Standing 1minute,
+pe_bp_stand3_systolic,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,BP Standing 3minutes - Systolic mmHg,
+pe_bp_stand3_diastolic,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,BP Standing 3minutes - Diastolic mmHg,
+pe_hr_stand3,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,HR Standing 3minutes,
+pe_bp_std13change,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Systolic BP drop of > 20 mmHg at 1 or 3 minutes,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_bp_symptoms,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Symptoms with BP measures,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_bp_symptype_unsteady,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Unsteady,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_bp_symptype_ltheaded,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Lightheaded,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_bp_symptype_vertigo,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vertigo,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_footabnormal,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Foot abnormalities,1 = 'Yes' | 2 = 'No' | 9 = 'Not assessed'
+pe_footexam_stiffness,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,stiffness,1 = 'Yes' | 2 = 'No'
+pe_footexam_swelling,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,swelling,1 = 'Yes' | 2 = 'No'
+pe_footexam_numbness,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,numbness,1 = 'Yes' | 2 = 'No'
+pe_footexam_ulcer,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,ulcer,1 = 'Yes' | 2 = 'No'
+pe_footexam_bunionht,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,bunion or hammertoe,1 = 'Yes' | 2 = 'No'
+pe_footexam_corncalluses,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,corn or calluses,1 = 'Yes' | 2 = 'No'
+pe_footexam_nailabnormal,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,nail abnormalities,1 = 'Yes' | 2 = 'No'
+pe_footwear,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Footwear,1 = 'No concerns' | 2 = 'Footwear concerns' | 9 = 'Not assessed'
+pe_snellen,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Snellen Eye Exam,
+rfc_medication,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Medication Risk Factor,"1 = 'No Medication Risk'
+2 = 'Medication Risk Factor FRIDs'
+3 = 'Medication Risk Factor Symptoms'
+4 = 'Medication Risk Factor Symptoms, FRIDs'
+5 = 'Medication Risk Factor Adherence'
+6 = 'Medication Risk Factor Adherence, FRIDs'
+7 = 'Medication Risk Factor Adherence, Symptoms'
+8 = 'Medication Risk Factor Adherence, Symptoms, FRIDs'
+9 = 'Medication Risk Factor Alcohol'
+10 = 'Medication Risk Factor Alcohol, FRIDs'
+11 = 'Medication Risk Factor Alcohol, Symptoms'
+12 = 'Medication Risk Factor Alcohol, Symptoms, FRIDs'
+13 = 'Medication Risk Factor Alcohol, Adherence'
+14 = 'Medication Risk Factor Alcohol, Adherence, FRIDs'
+15 = 'Medication Risk Factor Alcohol, Adherence, Symptoms'
+16 = 'Medication Risk Factor Alcohol, Adherence, Symptoms, FRIDs'
+20 = 'Unable to determine (missing data)'"
+rfc_p_medication,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Medication Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_med_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Medication Action A,"1 = 'None'
+2 = 'Refer to Pharmacist'
+3 = 'Refer to Site Clinical Director'
+4 = 'Refer to PCP'
+5 = 'Provide general medication handout'
+6 = 'Discuss adherence concerns'
+7 = 'Discuss medications patient may want to modify'
+8 = 'Pharm D review previously done'
+9 = 'No change in medication'"
+rfc_med_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Medication Action B,"1 = 'None'
+2 = 'Refer to Pharmacist'
+3 = 'Refer to Site Clinical Director'
+4 = 'Refer to PCP'
+5 = 'Provide general medication handout'
+6 = 'Discuss adherence concerns'
+7 = 'Discuss medications patient may want to modify'
+8 = 'Pharm D review previously done'
+9 = 'No change in medication'"
+rfc_med_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Medication Action C,"1 = 'None'
+2 = 'Refer to Pharmacist'
+3 = 'Refer to Site Clinical Director'
+4 = 'Refer to PCP'
+5 = 'Provide general medication handout'
+6 = 'Discuss adherence concerns'
+7 = 'Discuss medications patient may want to modify'
+8 = 'Pharm D review previously done'
+9 = 'No change in medication'"
+rfc_sgb,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,"Strength,gait,balance Risk Factor","1 = 'Minimal mobility problem (CBE)'
+2 = 'Minimal mobility problem (Outpatient PT)'
+3 = 'Minimal mobility problem (Outpatient PT or CBE)'
+4 = 'Minimal mobility problem, pain limits function (Outpatient PT)'
+5 = 'Moderate mobility problem (Home or Outpatient PT)'
+6 = 'Moderate mobility problem (Home or Outpatient PT or CBE)'
+7 = 'Severe mobility problem (Home or Outpatient PT)'
+20 = 'Unable to determine (missing data)'"
+rfc_p_sgb,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,"Strength, gait, balance Risk Factor Priority",1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_exercise_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Exercise Action A,"1 = 'None'
+2 = 'CBE'
+3 = 'Outpatient PT'
+4 = 'Home Health PT'
+5 = 'Home Exercises'
+6 = 'Other (i.e. Yoga, Personal Trainer)'"
+rfc_exercise_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Exercise Action B,"1 = 'None'
+2 = 'CBE'
+3 = 'Outpatient PT'
+4 = 'Home Health PT'
+5 = 'Home Exercises'
+6 = 'Other (i.e. Yoga, Personal Trainer)'"
+rfc_exercise_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Exercise Action C,"1 = 'None'
+2 = 'CBE'
+3 = 'Outpatient PT'
+4 = 'Home Health PT'
+5 = 'Home Exercises'
+6 = 'Other (i.e. Yoga, Personal Trainer)'"
+rfc_posthypotension,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Postural Hypotension Risk Factor,"1 = 'None'
+2 = 'Symptoms but no Change in BP'
+3 = 'Change in  BP but no Symptoms'
+4 = 'Symptoms and Change in BP'
+20 = 'Unable to determine (missing data)'"
+rfc_p_posthypotension,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Postural Hypotension Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_pos_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,POS Action A,"1 = 'None'
+2 = 'Education about behavior changes'
+3 = 'Recheck BP in 2 weeks'
+4 = 'Electronic note to PCP'
+5 = 'PCP notified immediately'
+6 = 'Known diagnosis.  Education material reviewed'"
+rfc_pos_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,POS Action B,"1 = 'None'
+2 = 'Education about behavior changes'
+3 = 'Recheck BP in 2 weeks'
+4 = 'Electronic note to PCP'
+5 = 'PCP notified immediately'
+6 = 'Known diagnosis.  Education material reviewed'"
+rfc_pos_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,POS Action C,"1 = 'None'
+2 = 'Education about behavior changes'
+3 = 'Recheck BP in 2 weeks'
+4 = 'Electronic note to PCP'
+5 = 'PCP notified immediately'
+6 = 'Known diagnosis.  Education material reviewed'"
+rfc_feet,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Feet Risk Factor,"1 = 'No Risk'
+2 = 'Risk, Feet'
+3 = 'Risk, Footwear'
+4 = 'Risk, Feet and Footwear'
+20 = 'Unable to determine (missing data)'"
+rfc_p_feet,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Feet Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_feet_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Feet Action A,"1 = 'None'
+2 = 'Referred  to PCP'
+3 = 'Suggest eval for PN'
+4 = 'Eval & treatment by PT'
+5 = 'Podiatrist'
+6 = 'Identified safer footwear'
+7 = 'Orthotist'
+8 = 'Getting regular nail care by podiatrist or thru pedicures.'"
+rfc_feet_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Feet Action B,"1 = 'None'
+2 = 'Referred  to PCP'
+3 = 'Suggest eval for PN'
+4 = 'Eval & treatment by PT'
+5 = 'Podiatrist'
+6 = 'Identified safer footwear'
+7 = 'Orthotist'
+8 = 'Getting regular nail care by podiatrist or thru pedicures.'"
+rfc_feet_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Feet Action C,"1 = 'None'
+2 = 'Referred  to PCP'
+3 = 'Suggest eval for PN'
+4 = 'Eval & treatment by PT'
+5 = 'Podiatrist'
+6 = 'Identified safer footwear'
+7 = 'Orthotist'
+8 = 'Getting regular nail care by podiatrist or thru pedicures.'"
+rfc_osteoporosis,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Osteoporosis Risk Factor,"1 = 'Normal: Not at risk'
+2 = 'Osteoporosis: On treatment less than 5 years'
+3 = 'Osteoporosis: On treatment 5+ years. Consider treatment holiday.'
+4 = 'Osteoporosis: Positive fragility fracture'
+5 = 'Osteoporosis: Positive BMD'
+6 = 'Osteoporosis: On treatment holiday'
+7 = 'Osteopenia: Low risk FRAX score'
+8 = 'Osteopenia: High risk FRAX score'
+9 = 'Low risk FRAX score'
+10 = 'High risk FRAX score'
+20 = 'Unable to determine (missing data)'"
+rfc_p_osteoporosis,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Osteoporosis Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_ost_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Osteoporosis Action A,"1 = 'None'
+2 = 'Start 1200mg Calcium Supplement (tablet or diet) or equivalent'
+3 = 'Continue 1200mg Calcium Supplement (tablet or diet) or equivalent'
+4 = 'Stop treatment temporarily (Drug holiday)'
+5 = 'Referred to PCP for eval & treatment (e.g., Bisphosphonate)'
+6 = 'Education'"
+rfc_ost_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Osteoporosis Action B,"1 = 'None'
+2 = 'Start 1200mg Calcium Supplement (tablet or diet) or equivalent'
+3 = 'Continue 1200mg Calcium Supplement (tablet or diet) or equivalent'
+4 = 'Stop treatment temporarily (Drug holiday)'
+5 = 'Referred to PCP for eval & treatment (e.g., Bisphosphonate)'
+6 = 'Education'"
+rfc_ost_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Osteoporosis Action C,"1 = 'None'
+2 = 'Start 1200mg Calcium Supplement (tablet or diet) or equivalent'
+3 = 'Continue 1200mg Calcium Supplement (tablet or diet) or equivalent'
+4 = 'Stop treatment temporarily (Drug holiday)'
+5 = 'Referred to PCP for eval & treatment (e.g., Bisphosphonate)'
+6 = 'Education'"
+rfc_vitamind,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vitamin D Risk Factor,"1 = 'None'
+2 = 'None, supplement more than recommended'
+3 = 'Vitamin D Insufficient Dose'
+4 = 'Vitamin D no Supplement'
+20 = 'Unable to determine (missing data)'"
+rfc_p_vitamind,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vitamin D Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_vid_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vitamin D Action A,"1 = 'None'
+2 = 'Reinforced OP recommendations'
+3 = 'Start or continue Vitamin D 800-1,000 IU'
+4 = 'Other'"
+rfc_vid_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vitamin D Action B,"1 = 'None'
+2 = 'Reinforced OP recommendations'
+3 = 'Start or continue Vitamin D 800-1,000 IU'
+4 = 'Other'"
+rfc_vid_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vitamin D Action C,"1 = 'None'
+2 = 'Reinforced OP recommendations'
+3 = 'Start or continue Vitamin D 800-1,000 IU'
+4 = 'Other'"
+rfc_vision,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vision Risk Factor,"1 = 'None'
+2 = 'Vision Risk'
+20 = 'Unable to determine (missing data)'"
+rfc_p_vision,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vision Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_vsn_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vision Action A,"1 = 'None'
+2 = 'Home safety assessment'
+3 = 'Referred to eye doctor'
+4 = 'Education about cataract surgery'
+5 = 'Annual Eye Doctor'
+6 = 'Current with eye exams'"
+rfc_vsn_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vision Action B,"1 = 'None'
+2 = 'Home safety assessment'
+3 = 'Referred to eye doctor'
+4 = 'Education about cataract surgery'
+5 = 'Annual Eye Doctor'
+6 = 'Current with eye exams'"
+rfc_vsn_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Vision Action C,"1 = 'None'
+2 = 'Home safety assessment'
+3 = 'Referred to eye doctor'
+4 = 'Education about cataract surgery'
+5 = 'Annual Eye Doctor'
+6 = 'Current with eye exams'"
+rfc_homesafety,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Home Safety Risk Factor,"1 = 'None'
+2 = 'In Home Assessment'
+3 = 'In Home Assessment Homebound'
+20 = 'Unable to determine (missing data)'"
+rfc_p_homesafety,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Home Safety Risk Factor Priority,1 = 'None' | 2 = 'Not Priority' | 3 = 'Priority'
+rfc_home_rx_a,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Home Safety Action A,"1 = 'None'
+2 = 'Home Safety Assessment via Home Care Agency'
+3 = 'Home Safety Assessment via OT'
+4 = 'Patient Led Safety Changes'
+5 = 'Other'"
+rfc_home_rx_b,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Home Safety Action B,"1 = 'None'
+2 = 'Home Safety Assessment via Home Care Agency'
+3 = 'Home Safety Assessment via OT'
+4 = 'Patient Led Safety Changes'
+5 = 'Other'"
+rfc_home_rx_c,"v#_ (# = 0,6,12,24,36,ah)",,stride_fcm_assessments,Home Safety Action C,"1 = 'None'
+2 = 'Home Safety Assessment via Home Care Agency'
+3 = 'Home Safety Assessment via OT'
+4 = 'Patient Led Safety Changes'
+5 = 'Other'"
+meds_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Medication assessment completed?,"0, No | 1, Yes"
+meds_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Medication risk?,"0, No | 1, Yes  [rfc_medication in 2:16]"
+meds_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Medication risk prioritized?,"0, No | 1, Yes"
+meds_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Medication patient actions recommended at baseline assessment,
+meds_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Medication action 1 (Visit with pharmacist)?,"0, No | 1, Yes"
+meds_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Medication action 2 (Allow Site Clinical Director to review medication)?,"0, No | 1, Yes"
+meds_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Medication action 3 (Visit with PCP for medication review)?,"0, No | 1, Yes"
+meds_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Medication nurse/FCM actions taken at baseline assessment,
+meds_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Medication action 1 (Provide handout about fall risk including mediations)?,"0, No | 1, Yes"
+meds_nact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Medication action 2 (Discuss adherence challenges)?,"0, No | 1, Yes"
+meds_nact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Medication action 3 (Discuss medications patient may want to modify)?,"0, No | 1, Yes"
+sgb_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Strength/Gait/Balance assessment completed?,"0, No | 1, Yes"
+sgb_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Strength/Gait/Balance risk?,"0, No | 1, Yes  [rfc_sgb in 1:7]"
+sgb_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Strength/Gait/Balance risk prioritized?,"0, No | 1, Yes"
+sgb_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Strength/Gait/Balance patient actions recommended at baseline assessment,
+sgb_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Strength/Gait/Balance action 1 (Community-based exercise)?,"0, No | 1, Yes"
+sgb_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Strength/Gait/Balance action 2 (Physical therapy)?,"0, No | 1, Yes"
+sgb_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Strength/Gait/Balance action 3 (Home exercise)?,"0, No | 1, Yes"
+sgb_pact4,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],"Patient agreed to Strength/Gait/Balance action 4 (Other (e.g., yoga, personal trainer))?","0, No | 1, Yes"
+posthyp_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Postural Hypotension assessment completed?,"0, No | 1, Yes"
+posthyp_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Postural Hypotension risk?,"0, No | 1, Yes  [rfc_posthypotension in 2:4]"
+posthyp_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Postural Hypotension risk prioritized?,"0, No | 1, Yes"
+posthyp_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Postural Hypotension patient actions recommended at baseline assessment,
+posthyp_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Postural Hypotension action 1 (Receive education about behavior changes to reduce PH)?,"0, No | 1, Yes"
+posthyp_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Postural Hypotension action 2 (Recheck blood pressure in two weeks)?,"0, No | 1, Yes"
+posthyp_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Postural Hypotension action 3 (Visit with PCP for postural hypotension management)?,"0, No | 1, Yes"
+posthyp_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Postural Hypotension nurse/FCM actions taken at baseline assessment,
+posthyp_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Postural Hypotension action 1 (Discuss diagnosis and management strategies)?,"0, No | 1, Yes"
+feet_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Feet assessment completed?,"0, No | 1, Yes"
+feet_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Feet risk?,"0, No | 1, Yes  [rfc_feet in 2:4]"
+feet_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Feet risk prioritized?,"0, No | 1, Yes"
+feet_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Feet patient actions recommended at baseline assessment,
+feet_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Feet action 1 (Visit with PCP for foot evaluation and treatment)?,"0, No | 1, Yes"
+feet_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Feet action 2 (Physical therapy)?,"0, No | 1, Yes"
+feet_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Feet action 3 (Visit with podiatrist)?,"0, No | 1, Yes"
+feet_pact4,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Feet action 4 (Identify safer footwear)?,"0, No | 1, Yes"
+feet_pact5,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Feet action 5 (Visit with orthotist)?,"0, No | 1, Yes"
+feet_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Feet nurse/FCM actions taken at baseline assessment,
+feet_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Feet action 1 (Provide information about peripheral neuropathy referrals)?,"0, No | 1, Yes"
+feet_nact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Feet action 2 (Reinforce benefits of continuing regular nail care via podiatrist or pedicures)?,"0, No | 1, Yes"
+osteo_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Osteoporosis assessment completed?,"0, No | 1, Yes"
+osteo_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Osteoporosis risk?,"0, No | 1, Yes  [rfc_osteoporosis in 2:4]"
+osteo_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Osteoporosis risk prioritized?,"0, No | 1, Yes"
+osteo_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Osteoporosis patient actions recommended at baseline assessment,
+osteo_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Osteoporosis action 1 (Start calcium supplment)?,"0, No | 1, Yes"
+osteo_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Osteoporosis action 2 (Stop treatment temporarily (drug holiday))?,"0, No | 1, Yes"
+osteo_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Osteoporosis action 3 (Visit with PCP for evaluation and treatment of OP)?,"0, No | 1, Yes"
+osteo_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Osteoporosis nurse/FCM actions taken at baseline assessment,
+osteo_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Osteoporosis action 1 (Reinforce benefits of continuing current OP management)?,"0, No | 1, Yes"
+osteo_nact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Osteoporosis action 2 (Provide education about OP and management)?,"0, No | 1, Yes"
+vitd_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Vitamin D assessment completed?,"0, No | 1, Yes"
+vitd_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Vitamin D risk?,"0, No | 1, Yes  [rfc_vitamind in 3:4]"
+vitd_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Vitamin D risk prioritized?,"0, No | 1, Yes"
+vitd_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Vitamin D patient actions recommended at baseline assessment,
+vitd_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Vitamin D action 1 (Reinforce benefits of continuing dietary supplement)?,"0, No | 1, Yes"
+vitd_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Vitamin D nurse/FCM actions taken at baseline assessment,
+vitd_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Vitamin D action 1 (Start Vitamin D supplement)?,"0, No | 1, Yes"
+ovd_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Osteoporosis or vitamin D assessment completed?,"0, No | 1, Yes"
+ovd_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Osteoporosis or vitamin D risk?,"0, No | 1, Yes"
+ovd_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Osteoporosis or vitamin D risk prioritized?,"0, No | 1, Yes"
+ovd_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Osteoporosis or vitamin D patient actions recommended at baseline assessment,
+ovd_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Osteoporosis or vitamin D action 1 (Start dietary supplement)?,"0, No | 1, Yes"
+ovd_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Osteoporosis or vitamin D action 2 (Stop treatment temporarily (drug holiday))?,"0, No | 1, Yes"
+ovd_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Osteoporosis or vitamin D action 3 (Visit with PCP for evaluation and treatment of OP)?,"0, No | 1, Yes"
+ovd_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Osteoporosis or vitamin D nurse/FCM actions taken at baseline assessment,
+ovd_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Osteoporosis or vitamin D action 1 (Reinforce benefits of continuing dietary supplement)?,"0, No | 1, Yes"
+ovd_nact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Osteoporosis or vitamin D action 2 (Provide education about OP and management)?,"0, No | 1, Yes"
+ovd_nact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Osteoporosis or vitamin D action 3 (Reinforce benefits of continuing current OP management)?,"0, No | 1, Yes"
+vision_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Vision assessment completed?,"0, No | 1, Yes"
+vision_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Vision risk?,"0, No | 1, Yes  [rfc_vision = 2]"
+vision_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Vision risk prioritized?,"0, No | 1, Yes"
+vision_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Vision patient actions recommended at baseline assessment,
+vision_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Vision action 1 (Receive a home safety assessmnt)?,"0, No | 1, Yes"
+vision_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],"Patient agreed to Vision action 2 (Visit eye doctor about a specific problem (e.g., cataracts))?","0, No | 1, Yes"
+vision_pact3,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Vision action 3 (Establish annual visits with eye doctor)?,"0, No | 1, Yes"
+vision_nrec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Vision nurse/FCM actions taken at baseline assessment,
+vision_nact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Vision action 1 (Provide education about cataract surgery)?,"0, No | 1, Yes"
+vision_nact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Nurse/FCM took Vision action 2 (Reinforce benefits of continuing annual eye exams)?,"0, No | 1, Yes"
+home_complete,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Home Safety assessment completed?,"0, No | 1, Yes"
+home_pos,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Positive for Home Safety risk?,"0, No | 1, Yes  [rfc_homesafety in 2:3]"
+home_priority,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Home Safety risk prioritized?,"0, No | 1, Yes"
+home_prec,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],# Home Safety patient actions recommended at baseline assessment,
+home_pact1,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Home Safety action 1 (Receive a home safety assessment)?,"0, No | 1, Yes"
+home_pact2,,"_v# (# = 0,6,12,24,36,ah)",[computed in processing],Patient agreed to Home Safety action 2 (Self-lead home safety changes)?,"0, No | 1, Yes"
+adjevent,,,[computed in processing],Participant had a confirmed outcome?,"0, No | 1, Yes"
+adjevent_time2first,,,[computed in processing],Time (in years) to first confirmed outcome,
+adjevent_count,,,[computed in processing],Number of confirmed outcomes,
