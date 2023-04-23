@@ -25,9 +25,42 @@
             background-color: #797a79;
             color: #f8f8f8
         }
+    
+        .tooltip {
+            position: absolute;
+            background-color: #df2121;
+            color: #191717;
+            padding: 5px 10px;
+            border-radius: 100px;
+            font-size: 20px;
+            z-index: 100;
+        }
+        /* .details {
+        position: absolute;
+        top: 0;
+        transform: translateY(70%) scale(0);
+        transition: transform 0.1s ease-in;
+        transform-origin: left;
+        display: inline;
+        background: white;
+        z-index: 20;
+        min-width: 100%;
+        padding: 1rem;
+        border: 1px solid black;
+        }
+        .has-details {
+        position: relative;
+        }
+        .has-details:hover span {
+            transform: translateY(70%) scale(1);
+        } */
+
+
     </style>
 </head>
 <body>
+    
+
     <div class="container">
         <h1 class="mt-5 mb-4">STRIDE Match</h1>
         <div class="mb-3">
@@ -43,11 +76,15 @@
                 {% endfor %}
             </select>
         </div>
+
         <div class="row">
             <div class="col-lg-12 table-container mb-3">
+                
                 <table class="table table-striped" id="table_a"></table>
             </div>
+            
             <div class="col-lg-12 table-container">
+                
                 <table class="table table-striped" id="table_b"></table>
             </div>
         </div>
@@ -71,6 +108,7 @@
                 $("#table_a").html("");
                 let table_a_header = "";
                 for (let i = 0; i < table_a_columns.length; i++) {
+
                         table_a_header += "<th scope='col'>" + table_a_columns[i] + "</th>";
                     }
                 table_a_header += "</tr></thead>";
@@ -79,6 +117,8 @@
                 let table_a_body = "<tbody>";
 
                 for (let i = 0; i < table_a_columns.length; i++) {
+
+
                     table_a_body += "<td>" + data.table_a[0][table_a_columns[i]] + "</td>";
                 }
                 table_a_body += "</tr>";
@@ -103,7 +143,12 @@
                 for (let i = 0; i < data.table_b.length; i++) {
                     table_b_body += "<tr><td><input type='checkbox' class='checkbox' data-id='" + data.table_b[i].id + "' " + (data.table_b[i].match ? "checked" : "") + "></td>";
                     for (let j = 0; j < table_b_columns.length; j++) {
-                        table_b_body += "<td>" + data.table_b[i][table_b_columns[j]] + "</td>";
+                        let query =table_b_columns[j]+'||'+data.table_b[i][table_b_columns[j]];
+                        // table_b_body += "<td class='has-details' data-description='" + query + "'>" + data.table_b[i][table_b_columns[j]] 
+                        //     + "<div id='tooltip' class='tooltip'></div></td>" + 
+                        //                 "";
+                        table_b_body += "<td class='tooltip-cell' data-query='" + query + "'>" + data.table_b[i][table_b_columns[j]] + "</td>";
+                        // table_b_body += "<td>" + data.table_b[i][table_b_columns[j]] + "</td>";
                     }
                     table_b_body += "</tr>";
                 }
@@ -184,6 +229,53 @@
             $(this).trigger("change");
         });
 
+        // $("#table_b").on("mouseenter", "td[data-description]", function (e) {
+        //     let query = $(this).data("description");
+        //     if (query) {
+        //         $.getJSON("/description", { query: query }, function (data) {
+        //             console.log(data)
+        //             $("#tooltip").text(data.description).show();
+        //         });
+        //     }
+        // });
+
+        // $("#table_b").on("mouseleave", "td[data-description]", function () {
+        //     $("#tooltip").hide();
+        // });
+        // function initializeTooltips() {
+        //     let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        //     let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        //         return new bootstrap.Tooltip(tooltipTriggerEl);
+        //     });
+        // }
+
+        $("#table_b").on("mouseenter", ".tooltip-cell", function () {
+            let query = $(this).data("query");
+            if (query) {
+                $.getJSON("/description", { query: query }, function (data) {
+                    if (data.description) {
+                        $(".tooltip-cell").attr("data-bs-toggle", "tooltip");
+                        $(".tooltip-cell").attr("data-bs-placement", "top");
+                        $(".tooltip-cell").attr("title", data.description);
+                        // initializeTooltips();
+                    } else {
+                        $(".tooltip-cell").removeAttr("data-bs-toggle");
+                        $(".tooltip-cell").removeAttr("data-bs-placement");
+                        $(".tooltip-cell").removeAttr("title");
+                    }
+                });
+            }
+        });
+
+        $("#table_b").on("mouseleave", ".tooltip-cell", function () {
+            $(".tooltip-cell").removeAttr("data-bs-toggle");
+            $(".tooltip-cell").removeAttr("data-bs-placement");
+            $(".tooltip-cell").removeAttr("title");
+        });
+
+
+
+
         // Your existing event handlers for the checkboxes remain the same
         $(document).on("change", ".checkbox", function() {
             let id = $(this).data("id");
@@ -191,6 +283,9 @@
             $.post("/update_match", {id: id, match: checked ? 1 : 0});
         });
         </script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> -->
+
 </body>
 </html>
 

@@ -47,5 +47,27 @@ def mark_match():
     seen = c.fetchone()[0]
     return jsonify({'seen': seen})
 
+@app.route("/description", methods=["GET"])
+def get_description():
+    query = request.args.get("query", "")
+    # Execute the query and fetch the description from the database
+    # For example:
+    # description = db.session.execute(query).fetchone()[0]
+    colname, value = query.split('||')
+    c = conn.cursor()
+    if colname.startswith('DX') and value:
+        value = value.replace('.', '')
+        c.execute("select text from icd where code=='" + value + "'")
+        description = c.fetchone()[0]
+        print(description)
+    elif colname.startswith('Pro') and value:
+        c.execute("select * from procode where CPTCode=='" + value + "'")
+        description = c.fetchone()[-1]
+        print(description)
+    else:
+        description = ''
+    return jsonify(description=description)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
